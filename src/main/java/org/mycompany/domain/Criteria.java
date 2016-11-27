@@ -1,7 +1,7 @@
 package org.mycompany.domain;
 
 /*
- *  마이바티스에서 파라미ㅓ가 여러개로 늘어나면 관리하기 힘드므로
+ *  마이바티스에서 파라미터가 여러개로 늘어나면 관리하기 힘드므로
  *  클래스 객체로 만들어서 처리
  */
 public class Criteria {

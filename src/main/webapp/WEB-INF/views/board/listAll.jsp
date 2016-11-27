@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="false"%>
 
+<%@include file="../include/header.jsp"%>
 
 <html>
 <head>
@@ -17,13 +18,13 @@ if(result == 'SUCCESS') {
 </script>
 </head>
 <body>
-<table>
+<table class="table table-hover">
   <tr>
-    <th style="width:10px">BNO</th>
+    <th >BNO</th>
     <th>TITLE</th>
     <th>WRITER</th>
     <th>REGDATE</th>
-    <th style="width:40px">VIEWCNT</th>
+    <th>VIEWCNT</th>
   </tr>
   
   <c:forEach items="${list}" var="boardVO">
@@ -32,7 +33,7 @@ if(result == 'SUCCESS') {
     <td><a href='/board/read?bno=${boardVO.bno}'>${boardVO.title}</a></td>
     <td>${boardVO.writer}</td>
     <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.regdate}" /></td>
-    <td><span>${boardVO.viewcnt}</</span></td>
+    <td><span class="badge">${boardVO.viewcnt}</</span></td>
   </tr>
   </c:forEach>
 </table>

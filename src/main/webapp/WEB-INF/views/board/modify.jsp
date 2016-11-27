@@ -3,17 +3,19 @@
 <%@include file="../include/header.jsp"%>
 
 <form role="form" method="post">
+<div class="box-body">
 	<label>BNO</label><br/>
-	<input type="text" name="bno" value="${boardVO.bno}" readonly="readonly">
+	<input type="text" class="form-control" name="bno" value="${boardVO.bno}" readonly="readonly">
 
 	<label>Title</label><br/>
-	<input type="text" name="title" value="${boardVO.title}" readonly="readonly">
+	<input type="text" class="form-control" name="title" value="${boardVO.title}" readonly="readonly">
 
 	<label>Content</label><br/>
-	<textarea name="content" rows="3">${boardVO.content}</textarea>
+	<textarea name="content" class="form-control" rows="3">${boardVO.content}</textarea>
 	
 	<label>Writer</label><br/>
-	<input type="text" name="writer" value="${boardVO.writer}" />
+	<input type="text" class="form-control" name="writer" value="${boardVO.writer}" readonly="readonly" />
+</div>
 </form>
 
 <button type="submit" class="btn btn-primary">SAVE</button>

@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="false"%>
 
+<%@include file="../include/header.jsp"%>
 
 <html>
 <head>
@@ -17,7 +18,7 @@ if(result == 'SUCCESS') {
 </script>
 </head>
 <body>
-<table>
+<table class="table">
   <tr>
     <th style="width:10px">BNO</th>
     <th>TITLE</th>
