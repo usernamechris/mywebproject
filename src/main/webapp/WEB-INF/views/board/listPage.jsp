@@ -6,6 +6,7 @@
 
 <%@include file="../include/header.jsp" %>
 
+
 <div class="box-body">
 <table class="table table-bordered">
 	<tr>
@@ -48,3 +49,28 @@
 	</c:if>
 </ul>
 </div>
+
+<form id="jobForm">
+  <input type='hidden' name="page" value=${pageMaker.cri.perPageNum}>
+  <input type='hidden' name="perPageNum" value=${pageMaker.cri.perPageNum}>
+</form>
+
+
+<script>
+	var result = '${msg}';
+	if (result == 'SUCCESS') {
+		alert("처리가 완료되었습니다.");
+	}
+	
+	$(".pagination li a").on("click", function(event){
+		
+		event.preventDefault(); 
+		
+		var targetPage = $(this).attr("href");
+		
+		var jobForm = $("#jobForm");
+		jobForm.find("[name='page']").val(targetPage);
+		jobForm.attr("action","/board/listPage").attr("method", "get");
+		jobForm.submit();
+	});
+</script>

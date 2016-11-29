@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
 
-<form role="form" method="post">
+<form role="form" action="modifyPage" method="post">
+	<input type='hidden' name='page' value="${cri.page}">
+	<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
+
 <div class="box-body">
 	<label>BNO</label><br/>
 	<input type="text" class="form-control" name="bno" value="${boardVO.bno}" readonly="readonly">
@@ -27,7 +30,7 @@ $(document).ready(function() {
 	console.log(formObj);
 	
 	$(".btn-warning").on("click", function() {
-		self.location = "/board/listPage";
+		self.location = "/board/listPage?page={cri.page}&perPageNum=${cri.perPageNum}";
 	});
 
 	$(".btn-primary").on("click", function() {

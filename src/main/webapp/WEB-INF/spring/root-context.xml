@@ -18,9 +18,14 @@
 		-->
 		<!-- log4jdbc-log4j2-jdbc 사용: 더 자세한 sql log -->
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		<!-- 
 		<property name="url" value="jdbc:log4jdbc:mysql://db4free.net/db4freehan"></property>
 		<property name="username" value="db4freehan"></property>
 		<property name="password" value="db4freehanpw"></property>
+		-->
+		<property name="url" value="jdbc:log4jdbc:postgresql://ec2-174-129-3-207.compute-1.amazonaws.com:5432/d72mhkmkec8q70?sslmode=require"></property>
+		<property name="username" value="nzflxzxbvyjexj"></property>
+		<property name="password" value="aM_qBygAVAliFSNOWZ3wiDUQpT"></property>
 	</bean>	
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
