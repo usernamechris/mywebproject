@@ -69,5 +69,6 @@ public class SampleController {
 		
 		return vo;
 	}
+	
 }
 

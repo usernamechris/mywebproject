@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.mycompany.domain.BoardVO;
 import org.mycompany.domain.Criteria;
 import org.mycompany.domain.PageMaker;
+import org.mycompany.domain.SearchCriteria;
 import org.mycompany.service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -137,14 +138,16 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
-	public void listPage(@ModelAttribute("cri") Criteria cri, Model model) throws Exception {
+	public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 		logger.info("/listPage: " + cri.toString());
 		
-		model.addAttribute("list", service.listCriteria(cri));
+		//model.addAttribute("list", service.listCriteria(cri));
+		model.addAttribute("list", service.listSearchCriteria(cri));
+
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		//pageMaker.setTotalCount(131);
-		pageMaker.setTotalCount(service.listCountCriteria(cri));
+		//pageMaker.setTotalCount(service.listCountCriteria(cri));
+		pageMaker.setTotalCount(service.listSearchCount(cri));
 		
 		model.addAttribute("pageMaker", pageMaker);
 	}

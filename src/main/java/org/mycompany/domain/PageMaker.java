@@ -106,7 +106,6 @@ public class PageMaker {
 		return uriComponents.toUriString();
 	}
 	
-	/*
 	public String makeSearch(int page){
 	    UriComponents uriComponents =
 	              UriComponentsBuilder.newInstance()
@@ -118,6 +117,5 @@ public class PageMaker {
 	    
 	    return uriComponents.toUriString();
 	  } 
-	  */
 	
 }

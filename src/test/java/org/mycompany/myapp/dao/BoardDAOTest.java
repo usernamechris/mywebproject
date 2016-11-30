@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mycompany.domain.BoardVO;
 import org.mycompany.domain.Criteria;
+import org.mycompany.domain.SearchCriteria;
 import org.mycompany.persistence.BoardDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -112,5 +113,23 @@ public class BoardDAOTest{
 		logger.info("=============  URI Test2 =============");
 		logger.info(uriComponents.toString());
 		// /board/read?bno=12&perPageNum=20
+	}
+	
+	@Test
+	public void testDynamic1() throws Exception {
+		SearchCriteria cri = new SearchCriteria();
+		cri.setPage(1);
+		cri.setKeyword("Hello");
+		cri.setSearchType("t");
+		logger.info("=============  Dynamic1 =============");
+		
+		List<BoardVO> list = dao.listSearch(cri);
+		
+		for (BoardVO boardVo : list) {
+			logger.info(boardVo.getBno() + ": " + boardVo.getTitle());
+		}
+
+		logger.info("COUNT: " + dao.listSearchCount(cri));
+		
 	}
 }
