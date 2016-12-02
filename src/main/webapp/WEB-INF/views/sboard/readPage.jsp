@@ -37,7 +37,19 @@
 	<button type="submit" class="btn btn-primary">GO LIST</button>
 </div>
 
+<div class="row">
+	<div><h3>ADD NEW REPLY</h3></div>
+</div>
+<div>
+<label>Writer</label>
+<input type='text' id='newReplyWriter'>
+<label>ReplyText</label>
+<input type='text' id='newReplyText'>
+</div>
 
+<div>
+<button type='submit' id='replyAddBtn'>ADD REPLY</button>
+</div>
 <script>
 $(document).ready(function(){
 	
