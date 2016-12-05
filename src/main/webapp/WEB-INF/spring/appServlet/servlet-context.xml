@@ -7,6 +7,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 <!-- 스프링 MVC관련 설정만 분리하기 위해서 만들어진 파일 -->
+<!-- 웹과 관련있는 부분 -->
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -20,6 +21,14 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> <!-- 뷰를 어떻게 처리하는가에 대한 설정 -->
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<!-- 파일 업로드 관련 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760" />
+	</beans:bean>
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="/Users/seok.han/Downloads" />
 	</beans:bean>
 	
 	<context:component-scan base-package="org.mycompany.myapp" /> <!-- base-package속성값에 해당하는 패키지 내부의 클래스들을 조사 -->
