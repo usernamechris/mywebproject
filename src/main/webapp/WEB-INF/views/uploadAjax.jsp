@@ -25,7 +25,7 @@ color: gray;
 <div class='fileDrop'></div>
 <div class='uploadedList'></div>
 
-<script src="/resources/bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 $(".fileDrop").on("dragenter dragover", function(event) {
 	event.preventDefault(); // 이것 안하면 새창에서 파일이 열려버림
@@ -35,7 +35,7 @@ $(".fileDrop").on("drop", function(event) {
 	event.preventDefault(); // 이것 안하면 새창에서 파일이 열려버림
 	
 	var files = event.originalEvent.dataTransfer.files;
-	var file = file[0];
+	var file = files[0];
 
 	console.log(file);
 	
@@ -51,10 +51,67 @@ $(".fileDrop").on("drop", function(event) {
 		contentType: false, // 기본값 x-www-form-urlencoded. 파일전송을 위해선 반드시 false값이어야 한다. 따라서 $.post대신 $.ajax써서 옵션값 줌
 		type: 'POST',
 		success: function(data) {
-			alert(data);
+			var str = "";
+			
+			console.log(data);
+			console.log(checkImageType(data));
+			
+			if (checkImageType(data)) {
+				str = "<div>"
+					+ "<a href='displayFile?fileName=" + getImageLink(data) + "'>"
+					+ "<img src='displayFile?fileName=" + data + "'/>"
+					+ "</a><small data-src=" + data + ">X</small></div>";
+			} else {
+				str = "<div><a href='displayFile?fileName="
+					+ data + "'>"
+					+ getOriginalName(data) + "</a>"
+					+ "<small data-src=" + data + ">X</small></div></div>";
+			}
+			
+			$(".uploadedList").append(str);
 		}
 	});
 });
+
+$(".uploadedList").on("click", "small", function(event){
+	var that = $(this);
+	
+	$.ajax({
+		url: "deleteFile",
+		type: "post",
+		data: {fileName:$(this).attr("data-src")},
+		dataType: "text",
+		success:function(result) {
+			if (result == 'deleted') {
+				that.parent("div").remove();
+			}
+		}
+	});
+});
+
+function checkImageType(fileName) {
+	var pattern = /jpg|gif|png|jpeg/i; //i는 대소구분 없음
+	return fileName.match(pattern);
+}
+
+function getOriginalName(fileName) {
+	if (checkImageType(fileName)) {
+		return;
+	}
+	
+	var idx = fileName.indexOf("_") + 1;
+	return fileName.substr(idx);
+}
+
+function getImageLink(fileName) {
+	if (!checkImageType(fileName)) {
+		return;
+	}
+	var front = fileName.substr(0, 12);
+	var end = fileName.substr(14);
+	
+	return front + end;
+}
 </script>
 </body>
 </html>

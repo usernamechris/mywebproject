@@ -4,6 +4,20 @@
 <%@include file="../include/header.jsp"%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
+<style type="text/css">
+    .popup {position: absolute;}
+    .back { background-color: gray; opacity:0.5; width: 100%; height: 300%; overflow:hidden;  z-index:1101;}
+    .front { 
+       z-index:1110; opacity:1; boarder:1px; margin: auto; 
+      }
+     .show{
+       position:relative;
+       max-width: 1200px; 
+       max-height: 800px; 
+       overflow: auto;       
+     } 
+</style>
+
 <!-- Main content -->
 <section class="content">
 	<div class="row">
@@ -50,17 +64,23 @@
 			    <button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
 			    <button type="submit" class="btn btn-primary" id="goListBtn">GO LIST </button>
 			  </div>
-
-
-
 			</div>
 			<!-- /.box -->
 		</div>
 		<!--/.col (left) -->
-
 	</div>
 	<!-- /.row -->
 
+	<!-- 업로드 파일 보여주기 -->
+	<div>
+	<ul class="uploadedList"></ul>
+	</div>
+	
+	<!-- 이미지 클릭시 큰화면으로 보여줌 -->
+	<div class='popup back' style='display:none;'></div>
+	<div id="popup_front" class='popup front' style="display:none;">
+		<img id="popup_img">
+	</div>
 
 
 	<div class="row">
@@ -98,10 +118,8 @@
 
 			<div class='text-center'>
 				<ul id="pagination" class="pagination pagination-sm no-margin ">
-
 				</ul>
 			</div>
-
 		</div>
 		<!-- /.col -->
 	</div>
@@ -343,4 +361,57 @@ $(document).ready(function(){
 	
 });
 </script>
+
+<script type="text/javascript" src="/resources/js/upload.js"></script>
+<script id="templateAttach" type="text/x-handlebars-template">
+	<li data-src='{{fullName}}'>
+	  <span><img src="{{imgsrc}}" alt="Attachment"></span>
+	  <div>
+	  <a href="{{getLink}}">{{fileName}}</a>
+	  </div>
+	</li>
+</script>
+<script>
+var bno = ${boardVO.bno};
+var template = Handlebars.compile($("#templateAttach").html());
+
+$.getJSON("/sboard/getAttach/" + bno, function(list) {
+
+	console.log("json sboard/getAttach");
+
+	$(list).each(function() {
+		var fileInfo = getFileInfo(this);
+		var html = template(fileInfo);
+		$(".uploadedList").append(html);
+	});
+});
+
+$(".uploadedList").on("click", function(event){
+
+	console.log("uploadedList clicked");
+
+	var fileLink = $(this).attr("href")	;
+	// fileLink 값 못가져옴
+
+
+	console.log("fileLink: " + fileLink);
+	
+	if(checkImageType(fileLink)) {
+		event.preventDefault();
+		
+		var imgTag = $("#popup_img");
+		imgTag.attr("src", fileLink);
+		
+		console.log(imgTag.attr("src"));
+		
+		$(".popup").show('slow');
+		imgTag.addClass("show");
+	}
+});
+
+$("#popup_img").on("click", function() {
+	$(".popup").hide('slow');
+});
+</script>
+
 

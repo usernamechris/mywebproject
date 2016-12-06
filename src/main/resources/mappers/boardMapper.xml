@@ -9,6 +9,11 @@
   values(#{title}, #{content}, #{writer})
   </insert>
   
+  <insert id="addAttach">
+  insert into tbl_attach(fullname, bno)
+  values(#{fullName}, LASTVAL())
+  </insert>
+  
   <select id="read" resultType="org.mycompany.domain.BoardVO">
   select
     bno, title, content, writer, regdate, viewcnt
@@ -34,6 +39,15 @@
   <delete id="delete">
   delete from tbl_board where bno = #{bno} 
   </delete>
+  
+  <delete id="deleteAttach">
+  delete from tbl_attach where bno = #{bno} 
+  </delete>
+  
+  <insert id="replaceAttach">
+  insert into tbl_attach(fullname, bno)
+  values(#{fullName}, #{bno})
+  </insert>
   
   <select id="listAll" resultType="org.mycompany.domain.BoardVO">
   <!-- where절의 ">" 때문에 CDATA 사용 -->
@@ -128,7 +142,6 @@
  </if>  
 </sql>
 
-  
   <select id="countPaging" resultType="int">
   <![CDATA[
   select
@@ -138,5 +151,10 @@
   where
   bno > 0
   ]]>
+  </select>
+  
+  <!-- 파일관련 -->
+  <select id="getAttach" resultType="string">
+  select fullname from tbl_attach where bno = #{bno} order by regdate
   </select>
 </mapper>
