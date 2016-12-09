@@ -54,6 +54,7 @@
 	<context:component-scan base-package="org.mycompany.persistence"></context:component-scan>
 	<context:component-scan base-package="org.mycompany.service"></context:component-scan>
 	<context:component-scan base-package="org.mycompany.aop"></context:component-scan>
+	<context:component-scan base-package="org.mycompany.dto" ></context:component-scan>
 	
 	<!-- aop 기능설정 -->
 	<aop:config></aop:config>

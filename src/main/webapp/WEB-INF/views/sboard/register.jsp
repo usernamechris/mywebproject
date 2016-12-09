@@ -19,11 +19,12 @@ margin: auto;
 </head>
 <body>
 REGISTER BOARD<br/><br/>
+
 <form id='registerForm' role="form" method="post">
 <div class="form-group">
-	Title <input type="text" name="title" class="form-control"><br><br/>
-	Content<textarea name="content" rows="3" class="form-control" placeholder="Enter..."></textarea><br/>
-	Writer<input type="text" name="writer" class="form-control" /><br/>
+	<label>Title</label><input type="text" name="title" class="form-control"><br><br/>
+	<label>Content</label><textarea name="content" rows="3" class="form-control" placeholder="Enter..."></textarea><br/>
+	<label>Writer</label><input type="text" name="writer" value='${login.uid }' readonly class="form-control" /><br/>
 </div>
 <div>
 	<label>File Drop Here</label>	

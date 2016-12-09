@@ -31,9 +31,38 @@
 		<beans:constructor-arg value="/Users/seok.han/Downloads" />
 	</beans:bean>
 	
-	<context:component-scan base-package="org.mycompany.myapp" /> <!-- base-package속성값에 해당하는 패키지 내부의 클래스들을 조사 -->
-	<context:component-scan base-package="org.mycompany.controller" />
+	<!-- 인터셉터 관련 -->
+	<beans:bean id="sampleInterceptor" class="org.mycompany.interceptor.SampleInterceptor">
+	</beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/doA"/>
+			<mapping path="/doB"/>
+			<beans:ref bean="sampleInterceptor" />
+		</interceptor>
+	</interceptors>
+
+	<beans:bean id="loginInterceptor" class="org.mycompany.interceptor.LoginInterceptor">
+	</beans:bean>
+	<beans:bean id="authInterceptor" class="org.mycompany.interceptor.AuthInterceptor">
+	</beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/user/loginPost"/>
+			<beans:ref bean="loginInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/sboard/register"/>
+			<mapping path="/sboard/modifyPage"/>
+			<mapping path="/sboard/removePage"/>
+			<beans:ref bean="authInterceptor" />
+		</interceptor>
+	</interceptors>
 	
+	
+	<!-- base-package속성값에 해당하는 패키지 내부의 클래스들을 조사 -->
+	<context:component-scan base-package="org.mycompany.myapp" /> 
+	<context:component-scan base-package="org.mycompany.controller" />
 	
 	
 </beans:beans>
