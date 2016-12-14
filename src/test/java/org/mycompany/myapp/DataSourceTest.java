@@ -1,5 +1,7 @@
 package org.mycompany.myapp;
 
+import static org.junit.Assert.*;
+
 import java.sql.Connection;
 
 import javax.inject.Inject;
@@ -16,6 +18,7 @@ public class DataSourceTest extends TestConfig {
 	public void testConection() throws Exception {
 		try (Connection con = ds.getConnection()) {
 			System.out.println(con);
+			assertTrue(con.toString().contains("jdbc.sql"));
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

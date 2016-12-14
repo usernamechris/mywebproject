@@ -1,5 +1,7 @@
 package org.mycompany.myapp;
 
+import static org.junit.Assert.assertTrue;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -23,6 +25,7 @@ public class MySQLConnectionTest {
 		
 		try(Connection con = DriverManager.getConnection(URL, USER, PW)) {
 			System.out.println("##con: " + con);
+			assertTrue(con.toString().contains("Connection@"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
