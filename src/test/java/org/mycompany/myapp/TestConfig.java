@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -18,6 +19,7 @@ import org.springframework.web.context.WebApplicationContext;
 @ContextConfiguration(
 		locations ={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
 @WebAppConfiguration
+@Ignore
 public class TestConfig {
 
 	@Inject
