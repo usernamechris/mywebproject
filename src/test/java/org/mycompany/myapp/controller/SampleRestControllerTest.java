@@ -1,8 +1,9 @@
-package org.mycompany.myapp;
+package org.mycompany.myapp.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.junit.Test;
+import org.mycompany.myapp.TestConfig;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 

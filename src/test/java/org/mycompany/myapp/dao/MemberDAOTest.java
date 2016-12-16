@@ -1,22 +1,23 @@
 package org.mycompany.myapp.dao;
 
+import static org.junit.Assert.*;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.inject.Inject;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mycompany.domain.MemberVO;
-import org.mycompany.myapp.controller.SampleControllerTest;
 import org.mycompany.persistence.MemberDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -32,10 +33,15 @@ public class MemberDAOTest {
 	
 	@Test
 	public void testTime() throws Exception {
+		Date now = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
 		System.out.println(dao.getTime());
+		
+		assertTrue(dao.getTime().startsWith(format.format(now)));
 	}
 	
-	@Test
+	@Test(expected=DataAccessException.class)
 	public void testInsertMember() throws Exception {
 		MemberVO vo = new MemberVO();
 		vo.setUserid("user000");
