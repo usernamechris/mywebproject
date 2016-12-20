@@ -16,7 +16,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#"><img src="resources/img/logo.png" alt="han seok" width="50%" height="100%"></a>
+      <a class="navbar-brand" href="#"><img src="/resources/img/logo_216x69.png" alt="han seok" width="100%" height="100%"></a>
+      <!-- 
+      <a class="navbar-brand" href="#">LOGO</a>
+      -->
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -27,7 +30,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="user/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span> Signup</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       </ul>
     </div>
   </div>
