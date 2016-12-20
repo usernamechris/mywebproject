@@ -1,26 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@include file="/WEB-INF/views/include/header.jsp" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-
-<form action = "/user/loginPost" method="post">
-	<div>
-	<input type="text" name = "uid"/>
-	</div>
-	<div>
-	<input type="password" name ="upw">
-	</div>
-	<div>
-	<label><input type="checkbox" name="useCookie"> Remember Me </label>
-	</div>
-	<div>
-	<button type="submit">Sign In</button>
-	</div>
-</form>
+<div class="container">
+	<h2>Log in</h2>
+	<form action = "/user/loginPost" method="post">
+		<div class="form-group">
+			<label for="uid">ID</label>
+			<input type="text" class="form-control" name = "uid" placeholder="user id"/>
+		</div>
+		<div class="form-group">
+			<label for="password">ID</label>
+			<input type="password" class="form-control" name ="upw" placeholder="password">
+		</div>
+		<div class="form-group">
+			<div class="checkbox">
+				<label><input type="checkbox" name="useCookie"> Remember Me </label>
+			</div>
+		</div>
+		<div class="form-group">
+		<button type="submit" class="btn btn-default">Log In</button>
+		</div>
+	</form>
+</div>
 </body>
 </html>
