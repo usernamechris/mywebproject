@@ -82,6 +82,7 @@ public class UploadFileUtils {
 		File target = new File(uploadPath + savedPath, savedName);
 		
 		FileCopyUtils.copy(fileData, target);
+		logger.info("saved file absolutePath: " + target.getAbsolutePath());
 		
 		String formatName = originalName.substring(originalName.lastIndexOf(".") + 1);
 		String uploadedFileName = null;

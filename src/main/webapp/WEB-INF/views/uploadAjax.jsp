@@ -53,8 +53,9 @@ $(".fileDrop").on("drop", function(event) {
 		success: function(data) {
 			var str = "";
 			
-			console.log(data);
-			console.log(checkImageType(data));
+			console.log("uploadAjax successed");
+			console.log("data: " + data);
+			console.log("image type: " + checkImageType(data));
 			
 			if (checkImageType(data)) {
 				str = "<div>"

@@ -33,7 +33,7 @@ REGISTER BOARD<br/><br/>
 
 <ul class="uploadedList">
 </ul>
-	<button type="submit" class="form-control">submit</button>
+<button type="submit" class="form-control">submit</button>
 </form>
 
 
@@ -74,8 +74,11 @@ $(".fileDrop").on("drop", function(event) {
 		contentType: false,
 		type: 'post',
 		success: function(data) {
+			console.log("data: " + data);
 			var fileInfo = getFileInfo(data);
+			console.log("fileInfo: " + fileInfo);
 			var html = template(fileInfo);
+			console.log(html);
 			$(".uploadedList").append(html);
 		}
 	});

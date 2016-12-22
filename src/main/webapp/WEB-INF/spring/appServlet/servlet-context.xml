@@ -28,7 +28,7 @@
 		<beans:property name="maxUploadSize" value="10485760" />
 	</beans:bean>
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="/WEB-INF/uploadStore" />
+		<beans:constructor-arg value="src/main/webapp/WEB-INF/uploadStore" />
 	</beans:bean>
 	
 	<!-- 인터셉터 관련 -->

@@ -60,6 +60,7 @@ public class FileUploadController {
 		
 	}
 
+	@ResponseBody
 	@RequestMapping(value="/uploadAjax",
 					method = RequestMethod.POST,
 					produces = "text/plain;charset=UTF-8") //한국어 전송을 위함
@@ -82,6 +83,8 @@ public class FileUploadController {
 		File target = new File(uploadPath,savedName);
 
 		FileCopyUtils.copy(fileData, target);
+		
+		logger.info("file absolutePath: " + target.getAbsolutePath());
 
 		return savedName;
 	
