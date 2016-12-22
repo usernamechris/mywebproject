@@ -14,9 +14,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<!-- heroku
 	<context:property-placeholder location="/WEB-INF/config.properties" /> 
-	-->
 	
 	<!-- AOP설정 자동으로 aspectj라이브러리를 이용하여 proxy객체를 생성 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
