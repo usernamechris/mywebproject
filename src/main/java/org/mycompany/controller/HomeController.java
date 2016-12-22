@@ -57,4 +57,12 @@ public class HomeController {
 		 return "home";
 	}
 	
+	@RequestMapping(value = "/doC", method = RequestMethod.GET)
+	public String doC() {
+		
+		logger.info("jdbc.username: " + System.getenv("jdbc.username") );
+
+		return "home";
+	}
+	
 }

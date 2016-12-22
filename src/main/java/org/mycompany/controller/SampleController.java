@@ -62,12 +62,6 @@ public class SampleController {
 
 	}
 	
-	@RequestMapping("doG")
-	public void doF() {
-		
-		logger.info("jdbc.username: " + System.getenv("jdbc.username") );
-
-	}
 	
 	@RequestMapping("doJSON")
 	public @ResponseBody ProductVO doJSON() { //@ResponseBody는 json객체로 리턴
