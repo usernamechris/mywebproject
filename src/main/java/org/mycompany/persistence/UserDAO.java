@@ -15,4 +15,6 @@ public interface UserDAO {
 
 	public void addUser(UserVO vo);
 
+	public void deleteUser(UserVO vo);
+
 }

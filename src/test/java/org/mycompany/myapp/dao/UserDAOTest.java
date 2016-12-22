@@ -5,6 +5,8 @@ import static org.junit.Assert.assertThat;
 
 import javax.inject.Inject;
 
+import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mycompany.domain.UserVO;
@@ -23,6 +25,16 @@ public class UserDAOTest {
 	@Inject
 	private UserDAO dao;
 	
+	private UserVO user1;
+
+	@Before
+	public void setUp() {
+		user1 = new UserVO();
+		user1.setUid("testUser1");
+		user1.setUpw("testPw1");
+		user1.setUname("tester1");	
+	}
+
 	@Test
 	public void loginTest() throws Exception {
 		LoginDTO dto = new LoginDTO();
@@ -35,20 +47,17 @@ public class UserDAOTest {
 	
 	@Test
 	public void addNewUser() throws Exception {
-		UserVO newUser = new UserVO();
-		newUser.setUid("testUser1");
-		newUser.setUpw("testPw1");
-		newUser.setUname("tester1");
+		dao.deleteUser(user1);
 		
-		dao.addUser(newUser);
+		dao.addUser(user1);
 		
 		LoginDTO dto = new LoginDTO();
-		dto.setUid(newUser.getUid());
-		dto.setUpw(newUser.getUpw());
+		dto.setUid(user1.getUid());
+		dto.setUpw(user1.getUpw());
 		UserVO addedUser = dao.login(dto);
 		
-		assertThat(newUser.getUid(), is(addedUser.getUid()));
-		assertThat(newUser.getUpw(), is(addedUser.getUpw()));
+		assertThat(user1.getUid(), is(addedUser.getUid()));
+		assertThat(user1.getUpw(), is(addedUser.getUpw()));
 	}
 	
 }

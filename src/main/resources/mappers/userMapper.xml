@@ -22,4 +22,9 @@
  	insert into tbl_user(uid, upw, uname )
 	values (#{uid},#{upw},#{uname})
  	</insert>
+ 	
+ 	<delete id="deleteUser">
+ 	delete from tbl_user
+ 	where uid = #{uid} and upw= #{upw}
+ 	</delete>
 </mapper>

@@ -41,8 +41,12 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void addUser(UserVO vo) {
-		
 		session.insert(namespace + ".addUser", vo);
+	}
+
+	@Override
+	public void deleteUser(UserVO vo) {
+		session.delete(namespace + ".deleteUser", vo);
 	}
 
 }
