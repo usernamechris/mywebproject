@@ -28,9 +28,9 @@
 		-->
 		<!-- log4jdbc-log4j2-jdbc 사용: 더 자세한 sql log -->
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="url" value="${env.jdbc.url}" ></property>
-		<property name="username" value="${env.jdbc.username}" ></property>
-		<property name="password" value="${env.jdbc.password}" ></property>
+		<property name="url" value="${systemEnvironment['jdbc.url']}" ></property>
+		<property name="username" value="${systemEnvironment['jdbc.username']}" ></property>
+		<property name="password" value="${systemEnvironment['jdbc.password']}" ></property>
 	</bean>	
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
