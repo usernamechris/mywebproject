@@ -13,4 +13,6 @@ public interface UserDAO {
 	
 	public UserVO checkUserWithSessionKey(String value);
 
+	public void addUser(UserVO vo);
+
 }

@@ -45,4 +45,9 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne(namespace+".readWith", paramMap);
 	}
 
+	@Override
+	public int numberOfMembers() {
+		return sqlSession.selectOne(namespace+".numberOfMembers");
+	}
+
 }

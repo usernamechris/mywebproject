@@ -2,6 +2,7 @@ package org.mycompany.domain;
 
 import java.util.Date;
 
+// for toby
 public class MemberVO {
 
 	private String userid;

@@ -18,4 +18,8 @@
 	where sessionKey = #{value} and sessionlimit > now()
 	</select>
  
+ 	<insert id="addUser">
+ 	insert into tbl_user(uid, upw, uname )
+	values (#{uid},#{upw},#{uname})
+ 	</insert>
 </mapper>

@@ -29,5 +29,12 @@
 	where
 	userid = #{userid} and userpw = #{userpw}
 	</select>
+	
+	<select id="numberOfMembers" resultType="int">
+	select
+	count(*)
+	from
+	tbl_member
+	</select>
 
 </mapper>

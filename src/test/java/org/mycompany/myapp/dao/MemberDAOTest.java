@@ -2,6 +2,8 @@ package org.mycompany.myapp.dao;
 
 import static org.junit.Assert.*;
 
+import static org.hamcrest.Matchers.*;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -33,23 +35,42 @@ public class MemberDAOTest {
 	
 	@Test
 	public void testTime() throws Exception {
-		Date now = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-		System.out.println(dao.getTime());
+		Date now = new Date();
+		Date dbTime = format.parse(dao.getTime());
+
+		long diffMills = now.getTime() - dbTime.getTime();
+		long diffMin = diffMills / 60000;
+		long diff = Math.abs(diffMin);
 		
-		assertTrue(dao.getTime().startsWith(format.format(now)));
+		assertThat((Long)diff, lessThan(Long.valueOf(10)));
 	}
 	
-	@Test(expected=DataAccessException.class)
-	public void testInsertMember() throws Exception {
-		MemberVO vo = new MemberVO();
-		vo.setUserid("user000");
-		vo.setUserpw("user000");
-		vo.setUsername("USER000");
-		vo.setEmail("user000@aaa.com");
-		
-		dao.insertMember(vo);
+	@Test
+	public void numberOfMembers() {
+		int number = dao.numberOfMembers();
+		System.out.println(number);
 	}
+//	@Test(expected=DataAccessException.class)
+//	//@Test
+//	public void testInsertMember()  {
+//		try {
+//			MemberVO vo = new MemberVO();
+//			vo.setUserid("user000");
+//			vo.setUserpw("user000");
+//			vo.setUsername("USER000");
+//			vo.setEmail("user000@aaa.com");
+//			
+//			dao.insertMember(vo);	
+//
+//		} catch (Exception e) {
+//			if (e.getMessage().contains("permission")) {
+//				fail(e.getMessage());
+//			}
+//			throw e;
+//		}
+//		
+//	}
 }
 

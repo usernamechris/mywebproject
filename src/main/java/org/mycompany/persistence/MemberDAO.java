@@ -10,6 +10,8 @@ public interface MemberDAO {
 	
 	public void insertMember(MemberVO vo);
 	
+	public int numberOfMembers();
+	
 	public MemberVO readMember(String userid) throws Exception;
 
 	public MemberVO readWithPW(String userid, String userpw) throws Exception;
