@@ -26,4 +26,6 @@ public interface BoardService {
 	
 	public List<String> getAttach(Integer bno) throws Exception;
 	
+	public String getShortUrl(String longUrl);
+	
 }

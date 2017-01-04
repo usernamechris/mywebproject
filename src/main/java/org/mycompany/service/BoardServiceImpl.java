@@ -8,6 +8,7 @@ import org.mycompany.domain.BoardVO;
 import org.mycompany.domain.Criteria;
 import org.mycompany.domain.SearchCriteria;
 import org.mycompany.persistence.BoardDAO;
+import org.mycompany.util.URLShortener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -89,6 +90,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<String> getAttach(Integer bno) throws Exception {
 		return dao.getAttach(bno);
+	}
+
+	@Override
+	public String getShortUrl(String longUrl) {
+		URLShortener urlShortener = new URLShortener();
+		return urlShortener.shortenURL(longUrl);
 	}
 
 }

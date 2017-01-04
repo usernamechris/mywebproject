@@ -1,4 +1,4 @@
-package org.mycompany.myapp.controller;
+package org.mycompany.controller;
 
 import javax.inject.Inject;
 
@@ -19,10 +19,10 @@ import org.springframework.web.context.WebApplicationContext;
 @WebAppConfiguration
 @ContextConfiguration(
 		locations ={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
-public class SampleControllerTest {
+public class BoardControllerTest{
 
 	private static final Logger logger =
-			LoggerFactory.getLogger(SampleControllerTest.class);
+			LoggerFactory.getLogger(BoardControllerTest.class);
 	
 	@Inject
 	private WebApplicationContext wac;
@@ -47,4 +47,3 @@ public class SampleControllerTest {
 		mockMvc.perform(MockMvcRequestBuilders.get("/doJSON")); // get방식으로 doJSON호출
 	}
 }
-

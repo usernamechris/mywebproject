@@ -3,6 +3,7 @@ package org.mycompany.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.mycompany.domain.BoardVO;
 import org.mycompany.domain.PageMaker;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.UrlPathHelper;
 
 @Controller
 @RequestMapping("/sboard/*")
@@ -50,9 +52,23 @@ public class SearchBoardController {
 	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
 	public void read(@RequestParam("bno") int bno,
 			@ModelAttribute("cri") SearchCriteria cri,
-			Model model) throws Exception {
-		logger.info("/read: " + cri.toString());
+			Model model,
+			HttpServletRequest request) throws Exception {
 
+		logger.info("/read: " + cri.toString());
+		/*
+		logger.info("/readPageURI: " + request.getRequestURI());
+		logger.info("/readPageURL: " + request.getRequestURL());
+		logger.info("/query: " + request.getQueryString());
+
+		String longUrl = request.getRequestURI() + "/" + request.getQueryString();
+		BoardVO vo = service.read(bno);
+		vo.setShortUrl(service.getShortUrl(longUrl));
+		
+		System.out.println(vo.getShortUrl());
+
+		model.addAttribute(vo);
+		*/
 		model.addAttribute(service.read(bno));
 	}
 

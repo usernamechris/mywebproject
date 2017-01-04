@@ -58,6 +58,7 @@
 							name="writer" class="form-control" value="${boardVO.writer}"
 							readonly="readonly">
 					</div>
+					
 				</div>
 				<!-- /.box-body -->
 

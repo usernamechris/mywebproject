@@ -1,4 +1,4 @@
-package org.mycompany.myapp.controller;
+package org.mycompany.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 

@@ -9,6 +9,7 @@ public class BoardVO {
 	private String title;
 	private String content;
 	private String writer;
+	private String shortUrl;
 	private Date regdate;
 	private int viewcnt;
 	private int replycnt;
@@ -62,6 +63,12 @@ public class BoardVO {
 	}
 	public void setViewcnt(int viewcnt) {
 		this.viewcnt = viewcnt;
+	}
+	public String getShortUrl() {
+		return shortUrl;
+	}
+	public void setShortUrl(String shortUrl) {
+		this.shortUrl = shortUrl;
 	}
 	@Override
 	public String toString() {

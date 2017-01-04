@@ -1,4 +1,4 @@
-package org.mycompany.myapp.controller;
+package org.mycompany.controller;
 
 import javax.inject.Inject;
 
@@ -14,15 +14,16 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.multipart.MultipartFile;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(
 		locations ={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
-public class BoardControllerTest{
+public class FileUploadControllerTest {
 
 	private static final Logger logger =
-			LoggerFactory.getLogger(BoardControllerTest.class);
+			LoggerFactory.getLogger(SampleControllerTest.class);
 	
 	@Inject
 	private WebApplicationContext wac;
@@ -37,13 +38,9 @@ public class BoardControllerTest{
 	}
 	
 	@Test
-	public void testDoA() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/doA")); // get방식으로 doA호출
-		mockMvc.perform(MockMvcRequestBuilders.get("/doB")); // get방식으로 doB호출
-		mockMvc.perform(MockMvcRequestBuilders.get("/doC")); // get방식으로 doC호출
-		mockMvc.perform(MockMvcRequestBuilders.get("/doD")); // get방식으로 doD호출
-		mockMvc.perform(MockMvcRequestBuilders.get("/doE")); // get방식으로 doE호출
-		mockMvc.perform(MockMvcRequestBuilders.get("/doF")); // get방식으로 doF호출
-		mockMvc.perform(MockMvcRequestBuilders.get("/doJSON")); // get방식으로 doJSON호출
+	public void uploadAjaxTest() throws Exception {
+		//MultipartFile file;
+		//mockMvc.perform(MockMvcRequestBuilders.get("/doA")); // get방식으로 doA호출
+		
 	}
 }
